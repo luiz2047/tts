@@ -5,17 +5,11 @@ An implementation of Tacotron speech synthesis in TensorFlow.
 
 ### Audio Samples
 
-  * **[Audio Samples](https://keithito.github.io/audio-samples/)** from models trained using this repo.
-    * The first set was trained for 441K steps on the [LJ Speech Dataset](https://keithito.com/LJ-Speech-Dataset/)
-      * Speech started to become intelligible around 20K steps.
-    * The second set was trained by [@MXGray](https://github.com/MXGray) for 140K steps on the [Nancy Corpus](http://www.cstr.ed.ac.uk/projects/blizzard/2011/lessac_blizzard2011/).
-
-
-### Recent Updates
-
-1. @npuichigo [fixed](https://github.com/keithito/tacotron/pull/205) a bug where dropout was not being applied in the prenet.
-
-2. @begeekmyfriend created a [fork](https://github.com/begeekmyfriend/tacotron) that adds location-sensitive attention and the stop token from the [Tacotron 2](https://arxiv.org/abs/1712.05884) paper. This can greatly reduce the amount of data required to train a model.
+  * The first set was trained for 441K steps on the [LJ Speech Dataset](https://keithito.com/LJ-Speech-Dataset/)
+    * Speech started to become intelligible around 20K steps.
+  * The second set was trained for 55K steps on the [RUSLAN: Russian Spoken Language Corpus For Speech Synthesis](https://ruslan-corpus.github.io/)
+    * Speech started to become intelligible around 15K steps.
+  * The third set was trained for 190K steps on the dataset took from [CSS10 Russian: Single Speaker Speech Dataset](https://www.kaggle.com/bryanpark/russian-single-speaker-speech-dataset)
 
 
 ## Background
@@ -26,7 +20,6 @@ where they present a neural text-to-speech model that learns to synthesize speec
 independent attempt to provide an open-source implementation of the model described in their paper.
 
 The quality isn't as good as Google's demo yet, but hopefully it will get there someday :-).
-Pull requests are welcome!
 
 
 
@@ -71,6 +64,7 @@ Pull requests are welcome!
    The following are supported out of the box:
     * [LJ Speech](https://keithito.com/LJ-Speech-Dataset/) (Public Domain)
     * [Blizzard 2012](http://www.cstr.ed.ac.uk/projects/blizzard/2012/phase_one) (Creative Commons Attribution Share-Alike)
+    * [RUSLAN](https://ruslan-corpus.github.io) (CC BY-NC-SA 4.0)
 
    You can use other datasets if you convert them to the right format. See [TRAINING_DATA.md](TRAINING_DATA.md) for more info.
 
@@ -85,25 +79,12 @@ Pull requests are welcome!
          |- wavs
    ```
 
-   or like this for Blizzard 2012:
-   ```
-   tacotron
-     |- Blizzard2012
-         |- ATrampAbroad
-         |   |- sentence_index.txt
-         |   |- lab
-         |   |- wav
-         |- TheManThatCorruptedHadleyburg
-             |- sentence_index.txt
-             |- lab
-             |- wav
-   ```
-
 3. **Preprocess the data**
    ```
    python3 preprocess.py --dataset ljspeech
    ```
-     * Use `--dataset blizzard` for Blizzard data
+     * Use `--dataset ruslan` for Ruslan data
+     * Use `--dataset ruspeech` for Ruspeech data
 
 4. **Train a model**
    ```
