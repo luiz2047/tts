@@ -10,6 +10,7 @@ An implementation of Tacotron speech synthesis in TensorFlow.
   * The second set was trained for 55K steps on the [RUSLAN: Russian Spoken Language Corpus For Speech Synthesis](https://ruslan-corpus.github.io/)
     * Speech started to become intelligible around 15K steps.
   * The third set was trained for 190K steps on the dataset took from [CSS10 Russian: Single Speaker Speech Dataset](https://www.kaggle.com/bryanpark/russian-single-speaker-speech-dataset)
+    * That set has trouble with audio quality and model can't give normal synthesis
 
 
 ## Background
@@ -44,7 +45,8 @@ The quality isn't as good as Google's demo yet, but hopefully it will get there 
    ```
    curl https://data.keithito.com/data/speech/tacotron-20180906.tar.gz | tar xzC /tmp
    ```
-
+   Or download pretrained Ruslan model from https://disk.yandex.ru/d/QcjidBM1Giv1NQ
+   Or Ruspeech from https://disk.yandex.ru/d/26h24xeQW6pwZQ
 2. **Run the demo server**:
    ```
    python3 demo_server.py --checkpoint /tmp/tacotron-20180906/model.ckpt
@@ -158,3 +160,4 @@ The quality isn't as good as Google's demo yet, but hopefully it will get there 
 ## Other Implementations
   * By Alex Barron: https://github.com/barronalex/Tacotron
   * By Kyubyong Park: https://github.com/Kyubyong/tacotron
+  * By Keith Ito: https://github.com/keithito/tacotron
